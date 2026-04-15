@@ -1,0 +1,23 @@
+artifact_path: file:C:/Users/Bripka/Downloads/Eksperimen_SML_Bintang/Membangun_model/mlruns/2/models/m-c3ab74d506ff443db62fd2c5b4bf6759/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.7
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.11.1
+model_id: m-c3ab74d506ff443db62fd2c5b4bf6759
+model_size_bytes: 389613
+model_uuid: m-c3ab74d506ff443db62fd2c5b4bf6759
+prompts: null
+run_id: 799d145a263d41cabab6b4b0cf9c14e3
+utc_time_created: '2026-04-15 03:29:28.294982'
