@@ -6,7 +6,6 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from sklearn.model_selection import GridSearchCV
 
 def load_data():
-    # Pastikan path ini sesuai dengan lokasi file kamu
     X_train = pd.read_csv('titanic_preprocessing/X_train.csv')
     X_test = pd.read_csv('titanic_preprocessing/X_test.csv')
     y_train = pd.read_csv('titanic_preprocessing/y_train.csv')
@@ -17,9 +16,6 @@ def load_data():
 def train():
     X_train, X_test, y_train, y_test = load_data()
 
-    mlflow.set_experiment("Titanic_Tuning")
-
-    # Hyperparameter grid
     param_grid = {
         "n_estimators": [50, 100],
         "max_depth": [None, 5, 10],
@@ -49,21 +45,17 @@ def train():
         recall = recall_score(y_test, y_pred)
         f1 = f1_score(y_test, y_pred)
 
-        # 🔥 Manual Logging (WAJIB SKILLED)
         mlflow.log_params(best_params)
         mlflow.log_metric("accuracy", acc)
         mlflow.log_metric("precision", precision)
         mlflow.log_metric("recall", recall)
         mlflow.log_metric("f1_score", f1)
-        
-        # ✨ Mencatat skor Cross-Validation terbaik (Bonus Biar Makin Pro)
         mlflow.log_metric("cv_score", grid_search.best_score_)
 
-        mlflow.sklearn.log_model(best_model, "best_model")
+        mlflow.sklearn.log_model(best_model, "model")
 
         print("Best Params:", best_params)
-        print("CV Score (Best Mean):", grid_search.best_score_)
-        print("Test Accuracy:", acc)
+        print("Accuracy:", acc)
 
 if __name__ == "__main__":
     train()
