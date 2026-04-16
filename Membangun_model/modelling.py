@@ -5,6 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 def load_data():
+    mlflow.set_tracking_uri("file:./mlruns")  
     X_train = pd.read_csv('titanic_preprocessing/X_train.csv')
     X_test = pd.read_csv('titanic_preprocessing/X_test.csv')
     y_train = pd.read_csv('titanic_preprocessing/y_train.csv')
